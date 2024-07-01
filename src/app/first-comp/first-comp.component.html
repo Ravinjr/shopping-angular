@@ -1,0 +1,28 @@
+
+<div class="form-container">
+    <h2>Be Connected with Us</h2>
+    <form (ngSubmit)="onSubmit()">
+        <div class="from-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required [(ngModel)]="name" name="name">
+        </div>
+        <div class="from-group">
+            <label for="name">Email:</label>
+            <input type="email" id="email" required [(ngModel)]="email" name="email">
+        </div>
+        <div class="from-group">
+            <label for="name">Message:</label>
+            <textarea  id="message" rows="4" required [(ngModel)]="message" name="message"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="flex-container" *ngIf="isSubmitted">
+       <app-message-details
+       *ngFor="let msg of messages;let i=index"
+       [message]="msg"
+       [index]="i"
+       (delete)="deleteMessage($event)"
+       ></app-message-details>
+      
+    </div>
+</div>
